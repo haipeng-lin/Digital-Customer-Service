@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.flash</groupId>
+        <artifactId>digital-modules</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>digital-demo</artifactId>
+
+    <description>
+        demo模块
+    </description>
+
+    <dependencies>
+
+        <!-- 通用工具-->
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-doc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-sms</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-mail</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-idempotent</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-mybatis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-log</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-excel</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-ratelimiter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-translation</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-sensitive</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-encrypt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-tenant</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-websocket</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>

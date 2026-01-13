@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.flash</groupId>
+        <artifactId>digital-customer-service</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>digital-common-bom</module>
+        <module>digital-common-social</module>
+        <module>digital-common-core</module>
+        <module>digital-common-doc</module>
+        <module>digital-common-excel</module>
+        <module>digital-common-idempotent</module>
+        <module>digital-common-job</module>
+        <module>digital-common-log</module>
+        <module>digital-common-mail</module>
+        <module>digital-common-mybatis</module>
+        <module>digital-common-oss</module>
+        <module>digital-common-ratelimiter</module>
+        <module>digital-common-redis</module>
+        <module>digital-common-satoken</module>
+        <module>digital-common-security</module>
+        <module>digital-common-sms</module>
+        <module>digital-common-web</module>
+        <module>digital-common-translation</module>
+        <module>digital-common-sensitive</module>
+        <module>digital-common-json</module>
+        <module>digital-common-encrypt</module>
+        <module>digital-common-tenant</module>
+        <module>digital-common-websocket</module>
+        <module>digital-common-sse</module>
+    </modules>
+
+    <artifactId>digital-common</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        common 通用模块
+    </description>
+
+</project>

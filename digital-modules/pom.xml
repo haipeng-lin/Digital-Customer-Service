@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.flash</groupId>
+        <artifactId>digital-customer-service</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>digital-demo</module>
+        <module>digital-generator</module>
+        <module>digital-job</module>
+        <module>digital-system</module>
+        <module>digital-workflow</module>
+        <module>digital-knowledge</module>
+    </modules>
+
+    <artifactId>digital-modules</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        digital-modules 业务模块
+    </description>
+
+</project>

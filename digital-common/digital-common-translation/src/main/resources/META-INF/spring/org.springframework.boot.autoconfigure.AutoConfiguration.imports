@@ -1,0 +1,6 @@
+com.flash.common.translation.config.TranslationConfig
+com.flash.common.translation.core.impl.DeptNameTranslationImpl
+com.flash.common.translation.core.impl.DictTypeTranslationImpl
+com.flash.common.translation.core.impl.OssUrlTranslationImpl
+com.flash.common.translation.core.impl.UserNameTranslationImpl
+com.flash.common.translation.core.impl.NicknameTranslationImpl

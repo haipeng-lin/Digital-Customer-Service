@@ -1,0 +1,5 @@
+com.flash.common.web.config.CaptchaConfig
+com.flash.common.web.config.FilterConfig
+com.flash.common.web.config.I18nConfig
+com.flash.common.web.config.ResourcesConfig
+com.flash.common.web.config.UndertowConfig

@@ -1,0 +1,3 @@
+com.flash.common.encrypt.config.EncryptorAutoConfiguration
+com.flash.common.encrypt.config.ApiDecryptAutoConfiguration
+
