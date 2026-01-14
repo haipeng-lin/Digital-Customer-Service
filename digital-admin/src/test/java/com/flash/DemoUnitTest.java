@@ -1,4 +1,4 @@
-package com.flash.test;
+package com.flash;
 
 import com.flash.common.web.config.properties.CaptchaProperties;
 import org.junit.jupiter.api.*;

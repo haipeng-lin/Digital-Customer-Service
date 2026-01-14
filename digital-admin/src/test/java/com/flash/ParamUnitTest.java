@@ -1,4 +1,4 @@
-package com.flash.test;
+package com.flash;
 
 import com.flash.common.core.enums.UserType;
 import org.junit.jupiter.api.AfterEach;

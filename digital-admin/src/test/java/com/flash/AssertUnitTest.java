@@ -1,4 +1,4 @@
-package com.flash.test;
+package com.flash;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
