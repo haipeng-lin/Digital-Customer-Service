@@ -10,7 +10,7 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
-
+import java.util.Date;
 
 
 /**
@@ -61,8 +61,19 @@ public class KbDocumentVo implements Serializable {
      * 是否可用（1-是 0否）
      */
     @ExcelProperty(value = "是否可用", converter = ExcelDictConvert.class)
-    @ExcelDictFormat(readConverterExp = "1=-是,0=否")
+    @ExcelDictFormat(dictType = "sys_enable")
     private String isEnable;
 
+    /**
+     * 创建人
+     */
+    @ExcelProperty(value = "创建人")
+    private String createBy;
+
+    /**
+     * 创建时间
+     */
+    @ExcelProperty(value = "创建时间")
+    private Date createTime;
 
 }

@@ -54,6 +54,7 @@ public class KbCategoryServiceImpl implements IKbCategoryService {
     @Override
     public TableDataInfo<KbCategoryVo> queryPageList(KbCategoryBo bo, PageQuery pageQuery) {
         LambdaQueryWrapper<KbCategory> lqw = buildQueryWrapper(bo);
+        lqw.orderByAsc(KbCategory::getOrderNum);
         Page<KbCategoryVo> result = baseMapper.selectVoPage(pageQuery.build(), lqw);
         return TableDataInfo.build(result);
     }

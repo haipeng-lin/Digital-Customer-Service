@@ -10,7 +10,7 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
-
+import java.util.Date;
 
 
 /**
@@ -50,7 +50,17 @@ public class KbCategoryVo implements Serializable {
      */
     @ExcelProperty(value = "是否可用", converter = ExcelDictConvert.class)
     @ExcelDictFormat(dictType = "sys_enable")
-    private Long isEnable;
+    private String isEnable;
 
+    /**
+     * 创建人
+     */
+    @ExcelProperty(value = "创建人")
+    private String createBy;
 
+    /**
+     * 创建时间
+     */
+    @ExcelProperty(value = "创建时间")
+    private Date createTime;
 }
