@@ -1,63 +1,62 @@
-import request from '@/utils/request';
-import { AxiosPromise } from 'axios';
-import { ${BusinessName}VO, ${BusinessName}Form, ${BusinessName}Query } from '@/api/${moduleName}/${businessName}/types';
+import type { ${BusinessName}Form, ${BusinessName}Query, ${BusinessName}VO } from './model';
+import type { ID, IDS, PageResult } from '#/api/common';
+
+import { commonExport } from '#/api/helper';
+import { requestClient } from '#/api/request';
 
 /**
  * 查询${functionName}列表
- * @param query
- * @returns {*}
+ * @param params
+ * @returns ${functionName}列表
  */
+export function list${BusinessName}(params?: ${BusinessName}Query) {
+    return requestClient.get<PageResult<${BusinessName}VO>>(
+        '/${moduleName}/${businessName}/list',
+        { params },
+    );
+}
 
-export const list${BusinessName} = (query?: ${BusinessName}Query): AxiosPromise<${BusinessName}VO[]> => {
-  return request({
-    url: '/${moduleName}/${businessName}/list',
-    method: 'get',
-    params: query
-  });
-};
+/**
+ * 导出${functionName}列表
+ * @param params
+ * @returns void
+ */
+export function export${BusinessName}(params?: ${BusinessName}Query) {
+    return commonExport('/${moduleName}/${businessName}/export', params ?? {});
+}
 
 /**
  * 查询${functionName}详细
- * @param ${pkColumn.javaField}
+ * @param ${pkColumn.javaField} 主键ID
+ * @returns ${functionName}详细
  */
-export const get${BusinessName} = (${pkColumn.javaField}: string | number): AxiosPromise<${BusinessName}VO> => {
-  return request({
-    url: '/${moduleName}/${businessName}/' + ${pkColumn.javaField},
-    method: 'get'
-  });
-};
+export function get${BusinessName}(id: ID) {
+    return requestClient.get<${BusinessName}VO>(`/${moduleName}/${businessName}/\${id}`);
+}
 
 /**
  * 新增${functionName}
  * @param data
+ * @returns void
  */
-export const add${BusinessName} = (data: ${BusinessName}Form) => {
-  return request({
-    url: '/${moduleName}/${businessName}',
-    method: 'post',
-    data: data
-  });
-};
+export function add${BusinessName}(data: ${BusinessName}Form) {
+    return requestClient.postWithMsg<void>('/${moduleName}/${businessName}', data);
+}
 
 /**
  * 修改${functionName}
  * @param data
+ * @returns void
  */
-export const update${BusinessName} = (data: ${BusinessName}Form) => {
-  return request({
-    url: '/${moduleName}/${businessName}',
-    method: 'put',
-    data: data
-  });
-};
+export function update${BusinessName}(data: ${BusinessName}Form) {
+    return requestClient.putWithMsg<void>('/${moduleName}/${businessName}', data);
+}
 
 /**
  * 删除${functionName}
- * @param ${pkColumn.javaField}
+ * @param id 主键ID或ID数组
+ * @returns void
  */
-export const del${BusinessName} = (${pkColumn.javaField}: string | number | Array<string | number>) => {
-  return request({
-    url: '/${moduleName}/${businessName}/' + ${pkColumn.javaField},
-    method: 'delete'
-  });
-};
+export function del${BusinessName}(id: ID | IDS) {
+    return requestClient.deleteWithMsg<void>(`/${moduleName}/${businessName}/\${id}`);
+}

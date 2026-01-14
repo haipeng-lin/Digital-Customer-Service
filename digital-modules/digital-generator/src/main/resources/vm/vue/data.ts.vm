@@ -1,0 +1,85 @@
+import type { VbenFormSchema } from '@vben/common-ui';
+import type { VxeGridProps } from '#/adapter/vxe-table';
+
+/**
+ * 搜索表单配置
+ */
+export const querySchema = (): VbenFormSchema[] => [
+    #foreach($column in $columns)
+        #if($column.isQuery == '1')
+            {
+                component: '#if($column.htmlType == "select" || $column.dictType != "")Select#else Input#end',
+                fieldName: '${column.javaField}',
+                label: '${column.columnComment}',
+                #if($column.dictType != "")
+                    componentProps: {
+                        options: [], // 建议通过全局指令或接口自动获取字典: ${column.dictType}
+                    },
+                #end
+            },
+        #end
+    #end
+];
+
+/**
+ * 表格列配置
+ */
+export const columns: VxeGridProps['columns'] = [
+    { type: 'checkbox', width: 50 },
+    #foreach($column in $columns)
+        #if($column.isList == '1')
+            #if($column.isPk == '1')
+                { field: '${column.javaField}', title: '${column.columnComment}', width: 100 },
+            #else
+                {
+                    field: '${column.javaField}',
+                    title: '${column.columnComment}'#if($column.dictType != ""),
+                    cellRender: {
+                        name: 'dict',
+                        props: { dictType: '${column.dictType}' }
+                    }#end
+                },
+            #end
+        #end
+    #end
+    {
+        field: 'action',
+        fixed: 'right',
+        slots: { default: 'action' },
+        title: '操作',
+        width: 160,
+    },
+];
+
+/**
+ * 弹窗表单配置 (新增/修改)
+ */
+export const modalSchema = (): VbenFormSchema[] => [
+    #foreach($column in $columns)
+        #if($column.isPk == '1')
+            {
+                fieldName: '${column.javaField}',
+                label: '${column.columnComment}',
+                component: 'Input',
+                dependencies: {
+                    show: () => false,
+                    triggerFields: [''],
+                },
+            },
+        #elseif(($column.isInsert == '1' || $column.isEdit == '1') && !$column.isSuperColumn($column.javaField))
+            {
+                fieldName: '${column.javaField}',
+                label: '${column.columnComment}',
+                component: '#if($column.htmlType == "inputNumber")InputNumber#elseif($column.htmlType == "select" || $column.dictType != "")Select#else Input#end',
+                #if($column.isRequired == '1')
+                    rules: 'required',
+                #end
+                #if($column.dictType != "")
+                    componentProps: {
+                        options: [], // 对应字典: ${column.dictType}
+                    },
+                #end
+            },
+        #end
+    #end
+];

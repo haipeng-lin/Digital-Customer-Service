@@ -1,0 +1,101 @@
+<script setup lang="ts">
+    import { computed, ref } from 'vue';
+
+    import { useVbenModal } from '@vben/common-ui';
+    import { $t } from '@vben/locales';
+    import { cloneDeep } from '@vben/utils';
+
+    import { useVbenForm } from '#/adapter/form';
+    import {
+        add${BusinessName},
+        get${BusinessName},
+        update${BusinessName},
+    } from '@/api/${moduleName}/${businessName}';
+
+    import { modalSchema } from './data';
+
+    const emit = defineEmits<{ reload: [] }>();
+
+    const isUpdate = ref(false);
+    const title = computed(() => {
+        return isUpdate.value ? $t('pages.common.edit') : $t('pages.common.add');
+    });
+
+    const [BasicForm, formApi] = useVbenForm({
+        commonConfig: {
+            // 默认占满两列
+            formItemClass: 'col-span-2',
+            // 默认 label 宽度
+            labelWidth: 80,
+            componentProps: {
+                class: 'w-full',
+            },
+        },
+        // 对应 data.ts 中的 modalSchema
+        schema: modalSchema(),
+        showDefaultActions: false,
+        wrapperClass: 'grid-cols-2',
+    });
+
+    const [BasicModal, modalApi] = useVbenModal({
+        fullscreenButton: false,
+        onCancel: handleCancel,
+        onConfirm: handleConfirm,
+        onOpenChange: async (isOpen) => {
+            if (!isOpen) {
+                return null;
+            }
+            modalApi.modalLoading(true);
+
+            // 获取从主页面传递过来的 id
+            const { id } = modalApi.getData() as { id?: number | string };
+            isUpdate.value = !!id;
+
+            if (isUpdate.value && id) {
+                // 获取详情数据
+                const res = await get${BusinessName}(id);
+
+                // 注意：这里根据后端是否返回解包后的对象决定是否使用 .data
+                // 如果拦截器已处理 R 对象，直接传 res 即可
+                await formApi.setValues(res);
+            }
+
+            modalApi.modalLoading(false);
+        },
+    });
+
+    async function handleConfirm() {
+        try {
+            modalApi.modalLoading(true);
+            const { valid } = await formApi.validate();
+            if (!valid) {
+                return;
+            }
+
+            // 获取表单数据
+            const data = cloneDeep(await formApi.getValues());
+
+            // 根据 isUpdate 状态决定调用新增还是修改接口
+            await (isUpdate.value ? update${BusinessName}(data) : add${BusinessName}(data));
+
+            // 通知主页面刷新列表
+            emit('reload');
+            await handleCancel();
+        } catch (error) {
+            console.error(error);
+        } finally {
+            modalApi.modalLoading(false);
+        }
+    }
+
+    async function handleCancel() {
+        modalApi.close();
+        await formApi.resetForm();
+    }
+</script>
+
+<template>
+    <BasicModal :close-on-click-modal="false" :title="title" class="w-[550px]">
+        <BasicForm />
+    </BasicModal>
+</template>

@@ -1,0 +1,60 @@
+import type { BaseEntity, PageQuery } from '#/api/common';
+
+/**
+ * ${functionName}视图对象
+ */
+export interface ${BusinessName}VO {
+    #foreach ($column in $columns)
+    /**
+     * ${column.columnComment}
+     */
+        #if($column.javaField == 'id' || $column.javaType == 'Long' || $column.javaType == 'Integer')
+            ${column.javaField}: number | string;
+        #else
+                ${column.javaField}: ${column.tsType};
+        #end
+
+    #end
+}
+
+/**
+ * ${functionName}提交对象
+ */
+export interface ${BusinessName}Form extends BaseEntity {
+    #foreach ($column in $columns)
+        #if(!$column.isSuperColumn($column.javaField))
+        /**
+         * ${column.columnComment}
+         */
+            #if($column.javaField == 'id' || $column.javaType == 'Long' || $column.javaType == 'Integer')
+                ${column.javaField}?: number | string;
+            #else
+                    ${column.javaField}?: ${column.tsType};
+            #end
+
+        #end
+    #end
+}
+
+/**
+ * ${functionName}查询对象
+ */
+export interface ${BusinessName}Query extends PageQuery {
+    #foreach ($column in $columns)
+        #if($column.isQuery == '1')
+        /**
+         * ${column.columnComment}
+         */
+            #if($column.javaType == 'Long' || $column.javaType == 'Integer')
+                ${column.javaField}?: number | string;
+            #else
+                    ${column.javaField}?: ${column.tsType};
+            #end
+
+        #end
+    #end
+    /**
+     * 日期范围参数
+     */
+    params?: any;
+}

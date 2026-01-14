@@ -131,6 +131,9 @@ public class VelocityUtils {
         }
         templates.add("vm/ts/api.ts.vm");
         templates.add("vm/ts/types.ts.vm");
+        templates.add("vm/ts/model.d.ts.vm");
+        templates.add("vm/vue/data.ts.vm");
+        templates.add("vm/vue/modal.vue.vm");
         if (GenConstants.TPL_CRUD.equals(tplCategory)) {
             templates.add("vm/vue/index.vue.vm");
         } else if (GenConstants.TPL_TREE.equals(tplCategory)) {
