@@ -33,6 +33,13 @@
                 <version>${revision}</version>
             </dependency>
 
+            <!-- ES -->
+            <dependency>
+                <groupId>com.flash</groupId>
+                <artifactId>digital-common-elasticsearch</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
             <!-- excel -->
             <dependency>
                 <groupId>com.flash</groupId>

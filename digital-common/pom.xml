@@ -14,6 +14,8 @@
         <module>digital-common-social</module>
         <module>digital-common-core</module>
         <module>digital-common-doc</module>
+        <module>digital-common-elasticsearch</module>
+        <module>digital-common-langchain4j</module>
         <module>digital-common-excel</module>
         <module>digital-common-idempotent</module>
         <module>digital-common-job</module>
