@@ -19,6 +19,20 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- AI 模块 -->
+            <dependency>
+                <groupId>com.flash</groupId>
+                <artifactId>digital-common-ai</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <!-- LangChain3j 模块 -->
+            <dependency>
+                <groupId>com.flash</groupId>
+                <artifactId>digital-common-langchain4j</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
             <!-- 核心模块 -->
             <dependency>
                 <groupId>com.flash</groupId>

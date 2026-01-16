@@ -11,13 +11,13 @@ import org.springframework.boot.context.metrics.buffering.BufferingApplicationSt
  */
 
 @SpringBootApplication
-public class DromaraApplication {
+public class DigitalApplication {
 
     public static void main(String[] args) {
-        SpringApplication application = new SpringApplication(DromaraApplication.class);
+        SpringApplication application = new SpringApplication(DigitalApplication.class);
         application.setApplicationStartup(new BufferingApplicationStartup(2048));
         application.run(args);
-        System.out.println("(♥◠‿◠)ﾉﾞ  RuoYi-Vue-Plus启动成功   ლ(´ڡ`ლ)ﾞ");
+        System.out.println("(♥◠‿◠)ﾉﾞ  Digital-Customer-Service 启动成功   ლ(´ڡ`ლ)ﾞ");
     }
 
 }

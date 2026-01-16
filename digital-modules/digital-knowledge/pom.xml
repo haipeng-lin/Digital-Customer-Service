@@ -23,6 +23,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- AI -->
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-common-ai</artifactId>
+        </dependency>
+
+
         <!-- ES -->
         <dependency>
             <groupId>com.flash</groupId>

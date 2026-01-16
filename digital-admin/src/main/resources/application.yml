@@ -93,7 +93,10 @@ spring:
     deserialization:
       # 允许对象忽略json中不存在的属性
       fail_on_unknown_properties: false
-
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchRestClientAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchDataAutoConfiguration
 # Sa-Token配置
 sa-token:
   # token名称 (同时也是cookie名称)

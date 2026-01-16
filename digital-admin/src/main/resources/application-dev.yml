@@ -1,7 +1,7 @@
 --- # 监控中心配置
 spring.boot.admin.client:
   # 增加客户端开关
-  enabled: true
+  enabled: false
   url: http://localhost:9090/admin
   instance:
     service-host-type: IP
@@ -30,6 +30,7 @@ snail-job:
 
 # 数据源配置
 spring:
+
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     # 动态数据源文档 https://www.kancloud.cn/tracy5546/dynamic-datasource/content
@@ -92,22 +93,33 @@ spring:
         # 多久检查一次连接的活性
         keepaliveTime: 30000
 
-  elasticsearch:
-    uris:
-    connection-timeout: 5s
-    socket-timeout: 3s
+
+  ai:
+    openai:
+      api-key: ms-d9652594-b82a-4369-aa02-bb427b7e0ccb
+      base-url: https://api-inference.modelscope.cn/v1/
+      chat:
+        options:
+          model: ZhipuAI/GLM-4.6
+          temperature: 0.7
+
+elasticsearch:
+  enabled: false
+  uris: http://8.155.33.36:9200
+  connection-timeout: 5s
+  socket-timeout: 3s
 
 --- # redis 单机配置(单机与集群只能开启一个另一个需要注释掉)
 spring.data:
   redis:
     # 地址
-    host:
+    host: 8.155.33.36
     # 端口，默认为6379
     port: 6379
     # 数据库索引
     database: 1
     # redis 密码必须配置
-    password:
+    password: zetlight20121211
     # 连接超时时间
     timeout: 10s
     # 是否开启ssl
@@ -273,3 +285,21 @@ justauth:
       client-id: 10**********6
       client-secret: 1f7d08**********5b7**********29e
       redirect-uri: ${justauth.address}/social-callback?source=gitea
+
+langchain4j:
+  open-ai:
+    # 普通对话
+    chat-model:
+      model-name: Qwen/Qwen3-VL-8B-Instruct
+      api-key: ms-4ddbf01f-c15e-43ba-8eb1-73d2c184fad3
+      base-url: https://api-inference.modelscope.cn/v1/
+    # 流式对话
+    streaming-chat-model:
+      model-name: Qwen/Qwen3-VL-8B-Instruct
+      api-key: ms-d9652594-b82a-4369-aa02-bb427b7e0ccb
+      base-url: https://api-inference.modelscope.cn/v1/
+  #    # 向量模型
+  #    embedding-model:
+  #      model-name: Qwen/Qwen3-Embedding-8B
+  #      api-key: ms-d9652594-b82a-4369-aa02-bb427b7e0ccb
+  #      base-url: https://api-inference.modelscope.cn/v1/
