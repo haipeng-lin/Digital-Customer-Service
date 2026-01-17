@@ -23,10 +23,10 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- AI -->
+        <!-- langchain4j -->
         <dependency>
             <groupId>com.flash</groupId>
-            <artifactId>digital-common-ai</artifactId>
+            <artifactId>digital-common-langchain4j</artifactId>
         </dependency>
 
 

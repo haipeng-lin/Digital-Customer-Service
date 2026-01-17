@@ -18,9 +18,8 @@ public class Langchain4jTest {
     private OpenAiService openAiService;
 
     @Test
-    void testChatModelCall() {
+    void testChat() {
         // 执行一个简单的调用
         System.out.println(openAiService.chat("你是谁"));
-
     }
 }

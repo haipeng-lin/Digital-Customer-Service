@@ -5,6 +5,11 @@ server:
   servlet:
     # 应用的访问路径
     context-path: /
+    # 设置响应的字符编码，避免流式返回输出乱码
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
   # undertow 配置
   undertow:
     # HTTP post内容的最大大小。当值为-1时，默认值为大小是无限的
