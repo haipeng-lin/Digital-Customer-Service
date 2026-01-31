@@ -10,7 +10,7 @@
         add${BusinessName},
         get${BusinessName},
         update${BusinessName},
-    } from '@/api/${moduleName}/${businessName}';
+    } from '#/api/${moduleName}/${businessName}';
 
     import { modalSchema } from './data';
 

@@ -16,7 +16,7 @@ import com.flash.common.core.domain.R;
 import com.flash.common.core.validate.AddGroup;
 import com.flash.common.core.validate.EditGroup;
 import com.flash.common.log.enums.BusinessType;
-import org.dromara.common.excel.utils.ExcelUtil;
+import com.flash.common.excel.utils.ExcelUtil;
 import ${packageName}.domain.vo.${ClassName}Vo;
 import ${packageName}.domain.bo.${ClassName}Bo;
 import ${packageName}.service.I${ClassName}Service;

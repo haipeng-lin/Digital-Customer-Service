@@ -12,11 +12,11 @@
         del${BusinessName},
         export${BusinessName},
         list${BusinessName},
-    } from '@/api/${moduleName}/${businessName}';
+    } from '#/api/${moduleName}/${businessName}';
     import { commonDownloadExcel } from '#/utils/file/download';
 
     import { columns, querySchema } from './data';
-    import ${BusinessName}Modal from './${businessName}-modal.vue';
+    import ${BusinessName}Modal from './modal.vue';
 
     const formOptions: VbenFormProps = {
         commonConfig: {
