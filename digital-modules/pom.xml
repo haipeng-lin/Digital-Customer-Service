@@ -12,6 +12,7 @@
     <modules>
         <module>digital-demo</module>
         <module>digital-generator</module>
+        <module>digital-human</module>
         <module>digital-job</module>
         <module>digital-system</module>
         <module>digital-workflow</module>

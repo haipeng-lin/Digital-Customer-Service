@@ -357,12 +357,20 @@
                 <version>${revision}</version>
             </dependency>
 
-            <!--  工作流模块  -->
+            <!--  知识库模块  -->
             <dependency>
                 <groupId>com.flash</groupId>
                 <artifactId>digital-knowledge</artifactId>
                 <version>${revision}</version>
             </dependency>
+
+            <!--  数字人模块  -->
+            <dependency>
+                <groupId>com.flash</groupId>
+                <artifactId>digital-human</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

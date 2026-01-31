@@ -111,6 +111,12 @@
             <artifactId>digital-knowledge</artifactId>
         </dependency>
 
+        <!--  数字人模块  -->
+        <dependency>
+            <groupId>com.flash</groupId>
+            <artifactId>digital-human</artifactId>
+        </dependency>
+
 
         <dependency>
             <groupId>de.codecentric</groupId>
