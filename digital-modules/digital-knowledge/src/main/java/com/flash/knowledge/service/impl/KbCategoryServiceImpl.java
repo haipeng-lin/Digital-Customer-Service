@@ -1,8 +1,10 @@
 package com.flash.knowledge.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.flash.common.core.exception.ServiceException;
 import com.flash.common.core.utils.MapstructUtils;
 import com.flash.common.core.utils.StringUtils;
 import com.flash.common.mybatis.core.page.PageQuery;
@@ -19,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 知识库分类Service业务层处理
@@ -40,7 +43,7 @@ public class KbCategoryServiceImpl implements IKbCategoryService {
      * @return 知识库分类
      */
     @Override
-    public KbCategoryVo queryById(Long id){
+    public KbCategoryVo queryById(Long id) {
         return baseMapper.selectVoById(id);
     }
 
@@ -54,7 +57,6 @@ public class KbCategoryServiceImpl implements IKbCategoryService {
     @Override
     public TableDataInfo<KbCategoryVo> queryPageList(KbCategoryBo bo, PageQuery pageQuery) {
         LambdaQueryWrapper<KbCategory> lqw = buildQueryWrapper(bo);
-        lqw.orderByAsc(KbCategory::getOrderNum);
         Page<KbCategoryVo> result = baseMapper.selectVoPage(pageQuery.build(), lqw);
         return TableDataInfo.build(result);
     }
@@ -74,10 +76,10 @@ public class KbCategoryServiceImpl implements IKbCategoryService {
     private LambdaQueryWrapper<KbCategory> buildQueryWrapper(KbCategoryBo bo) {
         Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<KbCategory> lqw = Wrappers.lambdaQuery();
-        lqw.orderByAsc(KbCategory::getId);
         lqw.like(StringUtils.isNotBlank(bo.getName()), KbCategory::getName, bo.getName());
         lqw.eq(bo.getOrderNum() != null, KbCategory::getOrderNum, bo.getOrderNum());
-        lqw.eq(bo.getIsEnable() != null, KbCategory::getIsEnable, bo.getIsEnable());
+        lqw.eq(bo.getStatus() != null, KbCategory::getStatus, bo.getStatus());
+        lqw.orderByAsc(KbCategory::getOrderNum);
         return lqw;
     }
 
@@ -114,8 +116,14 @@ public class KbCategoryServiceImpl implements IKbCategoryService {
     /**
      * 保存前的数据校验
      */
-    private void validEntityBeforeSave(KbCategory entity){
+    private void validEntityBeforeSave(KbCategory entity) {
         //TODO 做一些数据校验,如唯一约束
+        LambdaQueryWrapper<KbCategory> lqw = Wrappers.lambdaQuery();
+        lqw.eq(KbCategory::getName, entity.getName());
+        KbCategory kbCategory = baseMapper.selectOne(lqw);
+        if (kbCategory != null && !Objects.equals(entity.getId(), kbCategory.getId())) {
+            throw new ServiceException("分类名称已存在");
+        }
     }
 
     /**
@@ -127,9 +135,17 @@ public class KbCategoryServiceImpl implements IKbCategoryService {
      */
     @Override
     public Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid) {
-        if(isValid){
+        if (isValid) {
             //TODO 做一些业务上的校验,判断是否需要校验
         }
         return baseMapper.deleteByIds(ids) > 0;
+    }
+
+    @Override
+    public int updateStatus(Long id, String status) {
+        return baseMapper.update(null,
+            new LambdaUpdateWrapper<KbCategory>()
+                .set(KbCategory::getStatus, status)
+                .eq(KbCategory::getId, id));
     }
 }

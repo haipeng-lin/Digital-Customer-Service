@@ -4,12 +4,15 @@ import cn.idev.excel.annotation.ExcelIgnoreUnannotated;
 import cn.idev.excel.annotation.ExcelProperty;
 import com.flash.common.excel.annotation.ExcelDictFormat;
 import com.flash.common.excel.convert.ExcelDictConvert;
+import com.flash.common.translation.annotation.Translation;
+import com.flash.common.translation.constant.TransConstant;
 import com.flash.human.domain.DhOverlay;
 import io.github.linpeilie.annotations.AutoMapper;
 import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -69,5 +72,21 @@ public class DhOverlayVo implements Serializable {
     @ExcelProperty(value = "排序")
     private Long orderNum;
 
+    /**
+     * 创建人
+     */
+    @ExcelProperty(value = "创建人")
+    private Long createBy;
 
+    /**
+     * 创建人名称
+     */
+    @Translation(type = TransConstant.USER_ID_TO_NAME, mapper = "createBy")
+    private String createByName;
+
+    /**
+     * 创建时间
+     */
+    @ExcelProperty(value = "创建时间")
+    private Date createTime;
 }

@@ -4,6 +4,8 @@ import cn.idev.excel.annotation.ExcelIgnoreUnannotated;
 import cn.idev.excel.annotation.ExcelProperty;
 import com.flash.common.excel.annotation.ExcelDictFormat;
 import com.flash.common.excel.convert.ExcelDictConvert;
+import com.flash.common.translation.annotation.Translation;
+import com.flash.common.translation.constant.TransConstant;
 import com.flash.knowledge.domain.KbDocument;
 import io.github.linpeilie.annotations.AutoMapper;
 import lombok.Data;
@@ -36,8 +38,12 @@ public class KbDocumentVo implements Serializable {
     /**
      * 知识库分类id
      */
-    @ExcelProperty(value = "知识库分类id")
     private Long kbCategoryId;
+
+    /**
+     * 知识库分类
+     */
+    private String kbCategory;
 
     /**
      * 标题
@@ -60,15 +66,21 @@ public class KbDocumentVo implements Serializable {
     /**
      * 是否可用（1-是 0否）
      */
-    @ExcelProperty(value = "是否可用", converter = ExcelDictConvert.class)
+    @ExcelProperty(value = "状态", converter = ExcelDictConvert.class)
     @ExcelDictFormat(dictType = "sys_enable")
-    private String isEnable;
+    private String status;
 
     /**
      * 创建人
      */
     @ExcelProperty(value = "创建人")
-    private String createBy;
+    private Long createBy;
+
+    /**
+     * 创建人名称
+     */
+    @Translation(type = TransConstant.USER_ID_TO_NAME, mapper = "createBy")
+    private String createByName;
 
     /**
      * 创建时间

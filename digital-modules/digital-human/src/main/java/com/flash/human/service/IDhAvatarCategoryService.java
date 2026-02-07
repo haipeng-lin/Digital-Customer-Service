@@ -1,9 +1,9 @@
 package com.flash.human.service;
 
-import com.flash.human.domain.vo.DhAvatarCategoryVo;
-import com.flash.human.domain.bo.DhAvatarCategoryBo;
-import com.flash.common.mybatis.core.page.TableDataInfo;
 import com.flash.common.mybatis.core.page.PageQuery;
+import com.flash.common.mybatis.core.page.TableDataInfo;
+import com.flash.human.domain.bo.DhAvatarCategoryBo;
+import com.flash.human.domain.vo.DhAvatarCategoryVo;
 
 import java.util.Collection;
 import java.util.List;
@@ -65,4 +65,13 @@ public interface IDhAvatarCategoryService {
      * @return 是否删除成功
      */
     Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+
+    /**
+     * 修改状态
+     *
+     * @param id     id
+     * @param status 状态
+     * @return 结果
+     */
+    int updateStatus(Long id, String status);
 }

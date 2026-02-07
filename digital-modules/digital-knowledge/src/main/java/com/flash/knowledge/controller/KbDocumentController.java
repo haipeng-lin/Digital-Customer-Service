@@ -65,7 +65,7 @@ public class KbDocumentController extends BaseController {
     @SaCheckPermission("knowledge:kbDocument:query")
     @GetMapping("/{id}")
     public R<KbDocumentVo> getInfo(@NotNull(message = "主键不能为空")
-                                     @PathVariable Long id) {
+                                   @PathVariable Long id) {
         return R.ok(kbDocumentService.queryById(id));
     }
 
@@ -102,5 +102,16 @@ public class KbDocumentController extends BaseController {
     public R<Void> remove(@NotEmpty(message = "主键不能为空")
                           @PathVariable Long[] ids) {
         return toAjax(kbDocumentService.deleteWithValidByIds(List.of(ids), true));
+    }
+
+    /**
+     * 修改状态
+     */
+    @SaCheckPermission("knowledge:kbDocument:edit")
+    @Log(title = "知识库文档", businessType = BusinessType.UPDATE)
+    @RepeatSubmit()
+    @PutMapping("/changeStatus")
+    public R<Void> changeStatus(@RequestBody KbDocumentBo kbDocument) {
+        return toAjax(kbDocumentService.updateStatus(kbDocument.getId(), kbDocument.getStatus()));
     }
 }

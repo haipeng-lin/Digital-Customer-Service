@@ -39,9 +39,9 @@ public class DhAvatarCategoryBo extends BaseEntity {
     private String name;
 
     /**
-     * 状态（1-可用 2-禁用）
+     * 状态（0-可用 1-禁用）
      */
-    private Long status;
+    private String status;
 
     /**
      * 备注

@@ -32,9 +32,8 @@ public class TestController extends BaseController {
     public Flux<String> chatWithStream(@RequestParam("message") String message) {
         return openAiService.chatWhitStream(message)
             .map(token -> {
-                // 如果 token 为空或是换行符，进行替换
-                // 即使 token 是 "你好\n"，也会变成 "你好<|newline|>"
                 if (token == null) return "";
+                // 只需要做你的业务转换，不要手动拼接 "data:"
                 return token.replace("\n", "<|newline|>");
             });
     }

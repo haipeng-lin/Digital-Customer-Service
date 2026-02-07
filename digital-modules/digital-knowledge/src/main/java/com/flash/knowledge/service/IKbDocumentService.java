@@ -1,9 +1,9 @@
 package com.flash.knowledge.service;
 
-import com.flash.knowledge.domain.vo.KbDocumentVo;
-import com.flash.knowledge.domain.bo.KbDocumentBo;
-import com.flash.common.mybatis.core.page.TableDataInfo;
 import com.flash.common.mybatis.core.page.PageQuery;
+import com.flash.common.mybatis.core.page.TableDataInfo;
+import com.flash.knowledge.domain.bo.KbDocumentBo;
+import com.flash.knowledge.domain.vo.KbDocumentVo;
 
 import java.util.Collection;
 import java.util.List;
@@ -65,4 +65,13 @@ public interface IKbDocumentService {
      * @return 是否删除成功
      */
     Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+
+    /**
+     * 修改状态
+     *
+     * @param id     id
+     * @param status 状态
+     * @return 结果
+     */
+    int updateStatus(Long id, String status);
 }

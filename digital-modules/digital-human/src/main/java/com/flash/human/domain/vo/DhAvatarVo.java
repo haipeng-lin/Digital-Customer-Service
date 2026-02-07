@@ -4,12 +4,15 @@ import cn.idev.excel.annotation.ExcelIgnoreUnannotated;
 import cn.idev.excel.annotation.ExcelProperty;
 import com.flash.common.excel.annotation.ExcelDictFormat;
 import com.flash.common.excel.convert.ExcelDictConvert;
+import com.flash.common.translation.annotation.Translation;
+import com.flash.common.translation.constant.TransConstant;
 import com.flash.human.domain.DhAvatar;
 import io.github.linpeilie.annotations.AutoMapper;
 import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -77,11 +80,28 @@ public class DhAvatarVo implements Serializable {
     private String modelPath;
 
     /**
-     * 状态（1-可用 2-禁用）
+     * 状态（0-可用 1-禁用）
      */
     @ExcelProperty(value = "状态", converter = ExcelDictConvert.class)
     @ExcelDictFormat(readConverterExp = "1=-可用,2=-禁用")
-    private Long status;
+    private Integer status;
 
+    /**
+     * 创建人
+     */
+    @ExcelProperty(value = "创建人")
+    private Long createBy;
+
+    /**
+     * 创建人名称
+     */
+    @Translation(type = TransConstant.USER_ID_TO_NAME, mapper = "createBy")
+    private String createByName;
+
+    /**
+     * 创建时间
+     */
+    @ExcelProperty(value = "创建时间")
+    private Date createTime;
 
 }

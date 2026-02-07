@@ -3,4 +3,19 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.flash.knowledge.mapper.KbDocumentMapper">
+
+    <select id="selectQueryPage" resultType="com.flash.knowledge.domain.vo.KbDocumentVo">
+        select kbd.id,
+               kbd.kb_category_id,
+               kbc.name as kb_category,
+               kbd.title,
+               kbd.tag,
+               kbd.content,
+               kbd.status,
+               kbd.create_by,
+               kbd.create_time
+        from kb_document kbd
+                 join kb_category kbc on kbd.kb_category_id = kbc.id
+            ${ew.customSqlSegment}
+    </select>
 </mapper>

@@ -38,6 +38,17 @@ public class DhAvatarCategoryController extends BaseController {
     private final IDhAvatarCategoryService dhAvatarCategoryService;
 
     /**
+     * 修改状态
+     */
+    @SaCheckPermission("human:avatarCategory:edit")
+    @Log(title = "知识库分类", businessType = BusinessType.UPDATE)
+    @RepeatSubmit()
+    @PutMapping("/changeStatus")
+    public R<Void> changeStatus(@RequestBody DhAvatarCategoryBo avatarCategory) {
+        return toAjax(dhAvatarCategoryService.updateStatus(avatarCategory.getId(), avatarCategory.getStatus()));
+    }
+
+    /**
      * 查询形象分类列表
      */
     @SaCheckPermission("human:avatarCategory:list")

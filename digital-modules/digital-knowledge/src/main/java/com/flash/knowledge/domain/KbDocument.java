@@ -21,7 +21,7 @@ import java.io.Serial;
 @Document(indexName = "kb_document")
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName("dig_kb_document")
+@TableName("kb_document")
 public class KbDocument extends BaseEntity {
 
     @Serial
@@ -58,9 +58,9 @@ public class KbDocument extends BaseEntity {
     private String content;
 
     /**
-     * 是否可用（1-是 0否）
+     * 状态（0-可用 1-禁用）
      */
-    private String isEnable;
+    private String status;
 
 
 }

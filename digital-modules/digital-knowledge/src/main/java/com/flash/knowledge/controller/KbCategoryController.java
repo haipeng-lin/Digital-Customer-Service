@@ -38,6 +38,15 @@ public class KbCategoryController extends BaseController {
     private final IKbCategoryService kbCategoryService;
 
     /**
+     * 查询知识库文档列表
+     */
+    @SaCheckPermission("knowledge:kbDocument:list")
+    @GetMapping("/list/all")
+    public R<List<KbCategoryVo>> list(KbCategoryBo bo) {
+        return R.ok(kbCategoryService.queryList(bo));
+    }
+
+    /**
      * 查询知识库分类列表
      */
     @SaCheckPermission("knowledge:kbCategory:list")
@@ -102,5 +111,16 @@ public class KbCategoryController extends BaseController {
     public R<Void> remove(@NotEmpty(message = "主键不能为空")
                           @PathVariable Long[] ids) {
         return toAjax(kbCategoryService.deleteWithValidByIds(List.of(ids), true));
+    }
+
+    /**
+     * 修改状态
+     */
+    @SaCheckPermission("knowledge:kbCategory:edit")
+    @Log(title = "知识库分类", businessType = BusinessType.UPDATE)
+    @RepeatSubmit()
+    @PutMapping("/changeStatus")
+    public R<Void> changeStatus(@RequestBody KbCategoryBo kbCategory) {
+        return toAjax(kbCategoryService.updateStatus(kbCategory.getId(), kbCategory.getStatus()));
     }
 }

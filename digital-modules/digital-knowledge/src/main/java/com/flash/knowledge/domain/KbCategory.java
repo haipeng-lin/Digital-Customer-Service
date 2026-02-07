@@ -15,7 +15,7 @@ import java.io.Serial;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName("dig_kb_category")
+@TableName("kb_category")
 public class KbCategory extends TenantEntity {
 
     @Serial
@@ -38,9 +38,9 @@ public class KbCategory extends TenantEntity {
     private Long orderNum;
 
     /**
-     * 是否可用（1-是 0-否）
+     * 状态（0-可用 1-禁用）
      */
-    private String isEnable;
+    private String status;
 
 
 }

@@ -46,9 +46,9 @@ public class KbDocumentBo extends BaseEntity {
     private String content;
 
     /**
-     * 是否可用（1-是 0否）
+     * 状态（0-可用 1-禁用）
      */
-    private String isEnable;
+    private String status;
 
 
 }

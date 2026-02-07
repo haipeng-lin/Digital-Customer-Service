@@ -36,9 +36,9 @@ public class KbCategoryBo extends BaseEntity {
     private Long orderNum;
 
     /**
-     * 是否可用（1-是 0-否）
+     *
      */
-    private String isEnable;
+    private String status;
 
 
 }

@@ -38,6 +38,17 @@ public class DhAvatarController extends BaseController {
     private final IDhAvatarService dhAvatarService;
 
     /**
+     * 修改状态
+     */
+    @SaCheckPermission("human:avatar:edit")
+    @Log(title = "知识库分类", businessType = BusinessType.UPDATE)
+    @RepeatSubmit()
+    @PutMapping("/changeStatus")
+    public R<Void> changeStatus(@RequestBody DhAvatarBo dhAvatar) {
+        return toAjax(dhAvatarService.updateStatus(dhAvatar.getId(), dhAvatar.getStatus()));
+    }
+
+    /**
      * 查询形象列表
      */
     @SaCheckPermission("human:avatar:list")

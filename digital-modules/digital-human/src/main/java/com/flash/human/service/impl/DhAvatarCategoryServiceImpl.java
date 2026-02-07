@@ -1,6 +1,7 @@
 package com.flash.human.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.flash.common.core.utils.MapstructUtils;
@@ -131,5 +132,13 @@ public class DhAvatarCategoryServiceImpl implements IDhAvatarCategoryService {
             //TODO 做一些业务上的校验,判断是否需要校验
         }
         return baseMapper.deleteByIds(ids) > 0;
+    }
+
+    @Override
+    public int updateStatus(Long id, String status) {
+        return baseMapper.update(null,
+            new LambdaUpdateWrapper<DhAvatarCategory>()
+                .set(DhAvatarCategory::getStatus, status)
+                .eq(DhAvatarCategory::getId, id));
     }
 }
