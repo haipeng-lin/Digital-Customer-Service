@@ -184,6 +184,8 @@ public class VelocityUtils {
             fileName = businessName + "Menu.sql";
         } else if (template.contains("api.ts.vm")) {
             fileName = StringUtils.format("{}/api/{}/{}/index.ts", vuePath, moduleName, businessName);
+        } else if (template.contains("model.d.ts.vm")) {
+            fileName = StringUtils.format("{}/api/{}/{}/model.d.ts", vuePath, moduleName, businessName);
         } else if (template.contains("types.ts.vm")) {
             fileName = StringUtils.format("{}/api/{}/{}/types.ts", vuePath, moduleName, businessName);
         } else if (template.contains("index.vue.vm")) {

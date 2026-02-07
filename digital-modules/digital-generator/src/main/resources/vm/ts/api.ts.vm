@@ -31,7 +31,7 @@ export function export${BusinessName}(params?: ${BusinessName}Query) {
  * @returns ${functionName}详细
  */
 export function get${BusinessName}(id: ID) {
-    return requestClient.get<${BusinessName}VO>(`/${moduleName}/${businessName}/\${id}`);
+    return requestClient.get<${BusinessName}VO>(`/${moduleName}/${businessName}/${id}`);
 }
 
 /**
