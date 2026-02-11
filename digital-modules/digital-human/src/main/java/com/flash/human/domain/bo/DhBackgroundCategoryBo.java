@@ -35,13 +35,13 @@ public class DhBackgroundCategoryBo extends BaseEntity {
     /**
      * 分类名称（会议室、演播厅、自然风光）
      */
-    @NotBlank(message = "分类名称（会议室、演播厅、自然风光）不能为空", groups = {AddGroup.class, EditGroup.class})
+    @NotBlank(message = "分类名称不能为空", groups = {AddGroup.class, EditGroup.class})
     private String name;
 
     /**
-     * 状态（0-可用 1-禁用）
+     * 状态（0-启用 1-禁用）
      */
-    private Integer status;
+    private String status;
 
     /**
      * 备注

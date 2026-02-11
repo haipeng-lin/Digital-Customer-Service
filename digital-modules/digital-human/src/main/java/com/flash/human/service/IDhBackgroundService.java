@@ -75,5 +75,5 @@ public interface IDhBackgroundService {
      * @param status 状态
      * @return 结果
      */
-    int updateStatus(Long id, Integer status);
+    int updateStatus(Long id, String status);
 }

@@ -45,14 +45,14 @@ public class DhAvatarBo extends BaseEntity {
     private String name;
 
     /**
-     * 形象类型（1-2D 2-3D）
+     * 形象类型（0-2D 1-3D）
      */
-    private Long avatarType;
+    private String avatarType;
 
     /**
-     * 标签类型（1-官方 2-推荐 3-个人）
+     * 标签类型（0-官方 1-推荐 2-个人）
      */
-    private Long tagType;
+    private String tagType;
 
     /**
      * 缩略图地址
@@ -65,7 +65,7 @@ public class DhAvatarBo extends BaseEntity {
     private String modelPath;
 
     /**
-     * 状态（0-可用 1-禁用）
+     * 状态（0-启用 1-禁用）
      */
     private String status;
 

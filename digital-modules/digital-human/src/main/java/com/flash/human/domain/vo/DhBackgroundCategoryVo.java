@@ -49,7 +49,7 @@ public class DhBackgroundCategoryVo implements Serializable {
     private String name;
 
     /**
-     * 状态（0-可用 1-禁用）
+     * 状态（0-启用 1-禁用）
      */
     @ExcelProperty(value = "状态", converter = ExcelDictConvert.class)
     @ExcelDictFormat(readConverterExp = "1=-可用,2=-禁用")

@@ -38,7 +38,7 @@ public class KbCategory extends TenantEntity {
     private Long orderNum;
 
     /**
-     * 状态（0-可用 1-禁用）
+     * 状态（0-启用 1-禁用）
      */
     private String status;
 

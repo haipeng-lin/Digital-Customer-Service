@@ -8,15 +8,15 @@ import lombok.EqualsAndHashCode;
 import java.io.Serial;
 
 /**
- * 贴图对象 dh_overlay
+ * 对话会话对象 dh_chat_session
  *
  * @author haipeng-lin
- * @date 2026-01-31
+ * @date 2026-02-09
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName("dh_overlay")
-public class DhOverlay extends TenantEntity {
+@TableName("dh_chat_session")
+public class DhChatSession extends TenantEntity {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -28,34 +28,24 @@ public class DhOverlay extends TenantEntity {
     private Long id;
 
     /**
-     * 部门ID
-     */
-    private Long deptId;
-
-    /**
      * 用户ID
      */
     private Long userId;
 
     /**
-     * 贴图名称
+     * 标题
      */
-    private String name;
+    private String title;
 
     /**
-     * 标签类型（0-官方 1-推荐 2-个人）
+     * 来源渠道（0-网页 1-APP 2-小程序）
      */
-    private String tagType;
+    private String channel;
 
     /**
-     * 贴图Url
+     * 状态（0-AI 1-人工 2-已结束）
      */
-    private String url;
-
-    /**
-     * 排序
-     */
-    private Long orderNum;
+    private String status;
 
 
 }

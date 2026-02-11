@@ -1,11 +1,9 @@
 package com.flash.human.service;
 
-import com.flash.common.core.validate.EditGroup;
 import com.flash.common.mybatis.core.page.PageQuery;
 import com.flash.common.mybatis.core.page.TableDataInfo;
 import com.flash.human.domain.bo.DhBackgroundCategoryBo;
 import com.flash.human.domain.vo.DhBackgroundCategoryVo;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.Collection;
 import java.util.List;
@@ -75,5 +73,5 @@ public interface IDhBackgroundCategoryService {
      * @param status 状态
      * @return 结果
      */
-    int updateStatus(@NotNull(message = "ID不能为空", groups = {EditGroup.class}) Long id, Integer status);
+    int updateStatus(Long id, String status);
 }

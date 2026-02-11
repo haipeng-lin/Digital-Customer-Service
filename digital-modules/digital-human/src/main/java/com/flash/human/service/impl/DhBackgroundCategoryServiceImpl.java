@@ -75,7 +75,6 @@ public class DhBackgroundCategoryServiceImpl implements IDhBackgroundCategorySer
         Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<DhBackgroundCategory> lqw = Wrappers.lambdaQuery();
         lqw.orderByAsc(DhBackgroundCategory::getId);
-        lqw.eq(bo.getDeptId() != null, DhBackgroundCategory::getDeptId, bo.getDeptId());
         lqw.like(StringUtils.isNotBlank(bo.getName()), DhBackgroundCategory::getName, bo.getName());
         lqw.eq(bo.getStatus() != null, DhBackgroundCategory::getStatus, bo.getStatus());
         lqw.eq(bo.getOrderNum() != null, DhBackgroundCategory::getOrderNum, bo.getOrderNum());
@@ -135,7 +134,7 @@ public class DhBackgroundCategoryServiceImpl implements IDhBackgroundCategorySer
     }
 
     @Override
-    public int updateStatus(Long id, Integer status) {
+    public int updateStatus(Long id, String status) {
         return baseMapper.update(null,
             new LambdaUpdateWrapper<DhBackgroundCategory>()
                 .set(DhBackgroundCategory::getStatus, status)

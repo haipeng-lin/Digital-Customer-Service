@@ -60,11 +60,11 @@ public class DhBackgroundVo implements Serializable {
     private String name;
 
     /**
-     * 标签类型（1-官方 2-推荐 3-个人）
+     * 标签类型（0-官方 1-推荐 2-个人）
      */
     @ExcelProperty(value = "标签类型", converter = ExcelDictConvert.class)
     @ExcelDictFormat(readConverterExp = "1=-官方,2=-推荐,3=-个人")
-    private Long tagType;
+    private String tagType;
 
     /**
      * 背景Url
@@ -73,7 +73,7 @@ public class DhBackgroundVo implements Serializable {
     private String url;
 
     /**
-     * 状态（0-可用 1-禁用）
+     * 状态（0-启用 1-禁用）
      */
     @ExcelProperty(value = "状态", converter = ExcelDictConvert.class)
     @ExcelDictFormat(readConverterExp = "1=-可用,2=-禁用")

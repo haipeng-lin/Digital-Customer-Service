@@ -75,7 +75,6 @@ public class DhAvatarCategoryServiceImpl implements IDhAvatarCategoryService {
         Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<DhAvatarCategory> lqw = Wrappers.lambdaQuery();
         lqw.orderByAsc(DhAvatarCategory::getId);
-        lqw.eq(bo.getDeptId() != null, DhAvatarCategory::getDeptId, bo.getDeptId());
         lqw.like(StringUtils.isNotBlank(bo.getName()), DhAvatarCategory::getName, bo.getName());
         lqw.eq(bo.getStatus() != null, DhAvatarCategory::getStatus, bo.getStatus());
         lqw.eq(bo.getOrderNum() != null, DhAvatarCategory::getOrderNum, bo.getOrderNum());

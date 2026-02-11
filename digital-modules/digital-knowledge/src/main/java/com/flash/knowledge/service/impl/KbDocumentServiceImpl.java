@@ -114,7 +114,7 @@ public class KbDocumentServiceImpl implements IKbDocumentService {
 
         // 第二步：使用 LangChain4j 将文本转化为 Document 对象
         Document document = Document.from(bo.getContent());
-        document.metadata().put("doc_id", add.getId());
+        document.metadata().put("doc_id", add.getId()).put("title", add.getTitle());
         // 关键：在元数据中记录原始文档 ID，方便后续关联或删除
         // 2、文档分割器：将每个文档按每段进行分割，最大 1000 字符，每次重叠最多 200 个字符
         DocumentByParagraphSplitter paragraphSplitter = new DocumentByParagraphSplitter(1000, 200);
@@ -156,7 +156,7 @@ public class KbDocumentServiceImpl implements IKbDocumentService {
             // 3. 重新向量化新内容并入库
             Document document = Document.from(update.getContent());
             // 依然使用 put 保持元数据关联
-            document.metadata().put("doc_id", update.getId());
+            document.metadata().put("doc_id", update.getId()).put("title", update.getTitle());
 
             // 使用和你 insertByBo 相同的配置
             DocumentByParagraphSplitter paragraphSplitter = new DocumentByParagraphSplitter(1000, 200);

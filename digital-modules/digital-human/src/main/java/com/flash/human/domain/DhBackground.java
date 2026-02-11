@@ -28,16 +28,6 @@ public class DhBackground extends TenantEntity {
     private Long id;
 
     /**
-     * 部门ID
-     */
-    private Long deptId;
-
-    /**
-     * 用户ID
-     */
-    private Long userId;
-
-    /**
      * 分类ID
      */
     private Long backgroundCategory;
@@ -48,9 +38,9 @@ public class DhBackground extends TenantEntity {
     private String name;
 
     /**
-     * 标签类型（1-官方 2-推荐 3-个人）
+     * 标签类型（0-官方 1-推荐 2-个人）
      */
-    private Long tagType;
+    private String tagType;
 
     /**
      * 背景Url
@@ -58,9 +48,9 @@ public class DhBackground extends TenantEntity {
     private String url;
 
     /**
-     * 状态（0-可用 1-禁用）
+     * 状态（0-启用 1-禁用）
      */
-    private Integer status;
+    private String status;
 
     /**
      * 备注
@@ -70,7 +60,7 @@ public class DhBackground extends TenantEntity {
     /**
      * 排序
      */
-    private Long orderNum;
+    private Integer orderNum;
 
 
 }

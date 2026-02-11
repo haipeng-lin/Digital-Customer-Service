@@ -54,11 +54,11 @@ public class DhOverlayVo implements Serializable {
     private String name;
 
     /**
-     * 标签类型（1-官方 2-推荐 3-个人）
+     * 标签类型（0-官方 1-推荐 2-个人）
      */
     @ExcelProperty(value = "标签类型", converter = ExcelDictConvert.class)
     @ExcelDictFormat(readConverterExp = "1=-官方,2=-推荐,3=-个人")
-    private Long tagType;
+    private String tagType;
 
     /**
      * 贴图Url

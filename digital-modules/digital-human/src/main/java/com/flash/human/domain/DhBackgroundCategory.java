@@ -28,19 +28,14 @@ public class DhBackgroundCategory extends TenantEntity {
     private Long id;
 
     /**
-     * 部门ID
-     */
-    private Long deptId;
-
-    /**
      * 分类名称（会议室、演播厅、自然风光）
      */
     private String name;
 
     /**
-     * 状态（0-可用 1-禁用）
+     * 状态（0-启用 1-禁用）
      */
-    private Integer status;
+    private String status;
 
     /**
      * 备注

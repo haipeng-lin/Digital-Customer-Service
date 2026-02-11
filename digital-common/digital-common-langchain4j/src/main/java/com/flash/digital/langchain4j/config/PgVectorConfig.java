@@ -17,10 +17,10 @@ public class PgVectorConfig {
     @Bean("pgVectorEmbeddingStore")
     public EmbeddingStore<TextSegment> embeddingStore() {
         return PgVectorEmbeddingStore.builder()
-            .host("")          // 数据库地址
+            .host("8.155.33.36")          // 数据库地址
             .port(55432)                 // 端口
             .user("postgres")           // 用户名
-            .password("")       // 密码
+            .password("20020307")       // 密码
             .database("postgres")        // 数据库名
             .table("test_embeddings")   // 向量表名（不存在会自动创建）
             .dimension(1024)            // text-embedding-v4的推荐向量维度

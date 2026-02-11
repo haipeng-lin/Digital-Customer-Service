@@ -75,8 +75,6 @@ public class DhAvatarServiceImpl implements IDhAvatarService {
         Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<DhAvatar> lqw = Wrappers.lambdaQuery();
         lqw.orderByAsc(DhAvatar::getId);
-        lqw.eq(bo.getDeptId() != null, DhAvatar::getDeptId, bo.getDeptId());
-        lqw.eq(bo.getUserId() != null, DhAvatar::getUserId, bo.getUserId());
         lqw.like(StringUtils.isNotBlank(bo.getName()), DhAvatar::getName, bo.getName());
         lqw.eq(bo.getAvatarType() != null, DhAvatar::getAvatarType, bo.getAvatarType());
         lqw.eq(bo.getTagType() != null, DhAvatar::getTagType, bo.getTagType());
